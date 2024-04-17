@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "pic": "https://source.unsplash.com/random/200x200?sig=1",
+    "rating": 3,
+    "name": "Kingsk",
+    "Comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laborum nobis voluptate perferendis doloribus, accusamus libero voluptas consequatur itaque excepturi aut aspernatur alias porro facere nostrum explicabo id in fuga!"
+  },
+  {
+    "id": 2,
+    "pic": "https://source.unsplash.com/random/200x200?sig=2",
+    "rating": 4,
+    "name": "hitsh",
+    "Comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laborum nobis voluptate perferendis doloribus, accusamus libero voluptas consequatur itaque excepturi aut aspernatur alias porro facere nostrum explicabo id in fuga!"
+  },
+  {
+    "id": 3,
+    "pic": "https://source.unsplash.com/random/200x200?sig=3",
+    "rating": 2,
+    "name": "Nish",
+    "Comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laborum nobis voluptate perferendis doloribus, accusamus libero voluptas consequatur itaque excepturi aut aspernatur alias porro facere nostrum explicabo id in fuga!"
+  },
+  {
+    "id": 4,
+    "pic": "https://source.unsplash.com/random/200x200?sig=4",
+    "rating": 5,
+    "name": "Rakshe",
+    "Comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laborum nobis voluptate perferendis doloribus, accusamus libero voluptas consequatur itaque excepturi aut aspernatur alias porro facere nostrum explicabo id in fuga!"
+  }
+]

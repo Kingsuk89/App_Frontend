@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1",
+    "name": "Nitish Rajput",
+    "email": "nitish34@gmail.com",
+    "status": "active",
+    "start": "Wed Apr 17 2024 00:19:15 GMT+0530",
+    "end": "Fri May 17 2024 00:22:38 GMT+0530",
+    "next": "Sat May 18 2024 00:23:35 GMT+0530"
+  },
+
+  {
+    "id": "2",
+    "name": "Kingsuk Rajput",
+    "email": "kingsuk@gmail.com",
+    "status": "active",
+    "start": "Wed Apr 17 2024 00:19:15 GMT+0530",
+    "end": "Fri May 17 2024 00:22:38 GMT+0530",
+    "next": "Sat May 18 2024 00:23:35 GMT+0530"
+  }
+]
