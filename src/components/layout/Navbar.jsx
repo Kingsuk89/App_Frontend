@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import Logout from "../auth/Logout";
-import { useAuth } from "../../context/AuthProvider";
+// import Logout from "../auth/Logout";
 import { navItem } from "../../utils/utils";
 
 function Navbar() {
-  const [authUser] = useAuth();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -158,18 +156,18 @@ function Navbar() {
               </svg>
             </label>
 
-            {authUser ? (
+            {/* {authUser ? (
               <Logout />
-            ) : (
-              <div className="">
-                <Link
-                  className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </div>
-            )}
+            ) : ( */}
+            <div className="">
+              <Link
+                className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+                to="/login"
+              >
+                Login
+              </Link>
+            </div>
+            {/* )} */}
           </div>
         </div>
       </div>

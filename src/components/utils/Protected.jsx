@@ -1,11 +1,18 @@
 import PropTypes from "prop-types";
+import { Navigate } from "react-router-dom";
 
 const Protected = ({ children }) => {
-  return children;
+  const authToken = window.localStorage.getItem("authToken");
+
+  if (!authToken | (authToken === null)) {
+    return <Navigate to="/login" />;
+  } else {
+    return children;
+  }
 };
 
-PropTypes.Protected = {
-  children: PropTypes.element.isRequired,
+Protected.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Protected;

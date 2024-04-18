@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import { ResetUserForm } from "../../api/AuthApi";
@@ -29,12 +29,18 @@ const RestForm = () => {
     [mutate, reset]
   );
 
-  if (isError) {
-    toast.error(error.message);
-  }
-  if (isSuccess) {
-    toast.success("check your mail");
-  }
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("check your mail");
+    }
+  }, [isSuccess]);
+
   return (
     <React.Fragment>
       {isPending ? (

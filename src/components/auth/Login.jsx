@@ -1,16 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 
 import { LoginSchema } from "../../validation/authValidation";
 import { userLogin } from "../../api/AuthApi";
 import Loader from "../utils/Loader";
+import { useDispatch } from "react-redux";
+import { AuthUser } from "../../app/slice/authSlice";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     handleSubmit,
     formState: { errors },
@@ -21,11 +25,16 @@ function Login() {
     resolver: yupResolver(LoginSchema),
   });
 
-  const { mutate, isError, error, isPending, isSuccess } = useMutation({
+  const {
+    error,
+    data: LoginData,
+    isError,
+    isSuccess,
+    mutate,
+    isPending,
+  } = useMutation({
     mutationFn: userLogin,
-    onSuccess: () => {
-      navigate("/profile");
-    },
+    retry: 1,
   });
 
   const submit = useCallback(
@@ -36,12 +45,19 @@ function Login() {
     [mutate, reset]
   );
 
-  if (isSuccess) {
-    toast.success("Login successfully");
-  }
-  if (isError) {
-    toast.error(error.message);
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(AuthUser(LoginData));
+      navigate("/profile");
+      toast.success("Login successfully");
+    }
+  }, [isSuccess, LoginData, dispatch, navigate]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
   return (
     <React.Fragment>
       {isPending ? (

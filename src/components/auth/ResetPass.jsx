@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import { resetSchema } from "../../validation/authValidation";
@@ -39,11 +39,17 @@ const ResetPass = () => {
   if (isSuccess) {
     toast.success("Password reset successfully");
   }
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Password reset successfully");
+    }
+  }, [isSuccess]);
 
-  if (isError) {
-    toast.error(error.message);
-  }
-
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
   return (
     <React.Fragment>
       {isPending ? (

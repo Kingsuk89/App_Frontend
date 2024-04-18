@@ -3,12 +3,16 @@ import PerchesTable from "./PerchesTable";
 import { getUser } from "../../api/UserApi";
 import Loader from "../utils/Loader";
 import React from "react";
+import { selectAuthToken } from "../../app/slice/authSlice";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const authToken = useSelector(selectAuthToken);
   const { data: UserData, isFetching } = useQuery({
-    queryKey: ["UserDataD"],
-    queryFn: getUser,
+    queryKey: ["UserData"],
+    queryFn: () => getUser(authToken),
   });
+
   return (
     <React.Fragment>
       {isFetching ? (

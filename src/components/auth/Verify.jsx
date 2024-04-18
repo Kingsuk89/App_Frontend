@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { verifyUser } from "../../api/AuthApi";
@@ -9,6 +9,7 @@ import Loader from "../utils/Loader";
 
 const Verify = () => {
   const navigate = useNavigate();
+  const params = useParams();
 
   const { handleSubmit, register, reset } = useForm({
     defaultValues: { code: "" },
@@ -23,18 +24,23 @@ const Verify = () => {
 
   const submit = useCallback(
     (data) => {
-      mutate(data);
+      mutate({ data, email: params.email });
       reset();
     },
-    [mutate, reset]
+    [mutate, params.email, reset]
   );
 
-  if (isSuccess) {
-    toast.success("user verified");
-  }
-  if (isError) {
-    toast.error(error.message);
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("User verified");
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
   return (
     <React.Fragment>
       {isPending ? (

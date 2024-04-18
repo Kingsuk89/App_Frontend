@@ -14,10 +14,10 @@ export const signUp = async (data) => {
   }
 };
 
-export const verifyUser = async (data) => {
+export const verifyUser = async ({ data, email }) => {
   try {
     const response = await axios.post(
-      `${Auth_Base_Url}/verifyOTP?id=661fa655e33861cbd6cca64c`,
+      `${Auth_Base_Url}/verifyOTP?email=${email}`,
       data,
       {
         headers: { "Content-Type": "application/json" },
@@ -35,6 +35,7 @@ export const userLogin = async (data) => {
     const response = await axios.post(`${Auth_Base_Url}/login`, data, {
       headers: { "Content-Type": "application/json" },
     });
+
     return response.data;
   } catch (error) {
     console.log(error);

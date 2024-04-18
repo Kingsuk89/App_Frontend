@@ -1,83 +1,93 @@
 import { useMemo } from "react";
-import subscription from "../../../data.json";
 import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
-} from "@tanstack/react-table";
+} from "@tanstack/react-table"
+import {useQuery} from "@tanstack/react-query";
+import {getSubscriptionData} from "../../api/subscription.js";
+import toast from "react-hot-toast";
 
 const PerchesTable = () => {
-  const data = useMemo(() => subscription, []);
+  const {isSuccess,data:SubData,error , isError} = useQuery({
+    queryKey:["subscription"],
+    queryFn:getSubscriptionData,
+    staleTime:6*1000,
+    refetchInterval:6*1000
+  })
 
-  const handleEdit = (rowData) => {
-    console.log(rowData);
-  };
+    if(isError){
+        toast.error(error)
+    }
 
-  const verifyDate = (startDate, endDate, todayDate) => {
-    // Convert string dates to Date objects
-    startDate = new Date(startDate);
-    endDate = new Date(endDate);
-    todayDate = new Date(todayDate);
+    const handleEdit = (rowData) => {
+        console.log(rowData);
+    };
 
-    // Compare dates
-    return todayDate >= startDate && todayDate <= endDate;
-  };
+    const verifyDate = (startDate, endDate, todayDate) => {
+        // Convert string dates to Date objects
+        startDate = new Date(startDate);
+        endDate = new Date(endDate);
+        todayDate = new Date(todayDate);
 
+        // Compare dates
+        return todayDate >= startDate && todayDate <= endDate;
+    };
 
-  /** @type import('@tanstack/react-table').ColumnDef<any> */
-  const columns = [
-    {
-      header: "ID",
-      accessorKey: "id",
-    },
-    {
-      header: "Name",
-      accessorKey: "name",
-    },
-    {
-      header: "Email",
-      accessorKey: "email",
-    },
-    { header: "Status", accessorKey: "status" },
-    {
-      header: "Subscription start",
-      accessorKey: "start",
-      cell: (info) => new Date(info.getValue()).toDateString().split(","),
-    },
-    {
-      header: "End",
-      accessorKey: "end",
-      cell: (info) => new Date(info.getValue()).toDateString().split(","),
-    },
-    {
-      head: "Next payment Date",
-      accessorKey: "next",
-      cell: (info) => new Date(info.getValue()).toDateString().split(","),
-    },
-    {
-      header: "Actions",
-      accessorKey: "actions",
-      cell: ({ row }) => {
-        const startDate =row.original.start
-        const endDate = row.original.end;
-        const todayDate = new Date();
-        const isDisabled = verifyDate(startDate, endDate, todayDate);
-        // if(isDisabled){
-        //
-        // }
-        return (
-            <button disabled={isDisabled||row.original.status==="expire"} onClick={() => console.log('hello')} className="text-white bg-blue-700 px-4 py-2 rounded-md">
-              Pay
-            </button>
-        );
-      },
-    },
-  ];
+     const columns = [
+        {
+            header: "ID",
+            accessorKey: "id",
+        },
+        {
+            header: "Name",
+            accessorKey: "name",
+        },
+        {
+            header: "Email",
+            accessorKey: "email",
+        },
+        { header: "Status", accessorKey: "status" },
+        {
+            header: "Subscription start",
+            accessorKey: "start",
+            cell: (info) => new Date(info.getValue()).toDateString().split(","),
+        },
+        {
+            header: "End",
+            accessorKey: "end",
+            cell: (info) => new Date(info.getValue()).toDateString().split(","),
+        },
+        {
+            head: "Next payment Date",
+            accessorKey: "next",
+            cell: (info) => new Date(info.getValue()).toDateString().split(","),
+        },
+        {
+            header: "Actions",
+            accessorKey: "actions",
+            cell: ({ row }) => {
+                const startDate =row.original.start
+                const endDate = row.original.end;
+                const todayDate = new Date();
+                const isDisabled = verifyDate(startDate, endDate, todayDate);
+                // if(isDisabled){
+                //
+                // }
+                return (
+                    <button disabled={isDisabled||row.original.status==="expire"} onClick={() => console.log('hello')} className="text-white bg-blue-700 px-4 py-2 rounded-md">
+                        Pay
+                    </button>
+                );
+            },
+        },
+    ];
+
 
   const table = useReactTable({
     columns,
-    data,
+    data:isSuccess?SubData:[],
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });

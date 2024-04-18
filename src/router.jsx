@@ -10,11 +10,16 @@ import RestForm from "./components/auth/RestForm";
 import ResetPass from "./components/auth/ResetPass";
 import Profile from "./components/user/Profile";
 import Contact from "./components/contact/Contact";
+import Protected from "./components/utils/Protected";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <Protected>
+        <Layout />
+      </Protected>
+    ),
     children: [
       {
         path: "",
@@ -42,10 +47,22 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  { path: "/signUp", element: <Signup /> },
-  { path: "/verify", element: <Verify /> },
-  { path: "/reset-form", element: <RestForm /> },
-  { path: "/reset", element: <ResetPass /> },
+  {
+    path: "/signUp",
+    element: <Signup />,
+  },
+  {
+    path: "/verify/:email",
+    element: <Verify />,
+  },
+  {
+    path: "/reset-form",
+    element: <RestForm />,
+  },
+  {
+    path: "/reset",
+    element: <ResetPass />,
+  },
 ]);
 
 export default router;

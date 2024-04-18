@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -32,10 +32,6 @@ function Signup() {
   } = useMutation({
     mutationFn: signUp,
     retry: 1,
-    onSuccess: () => {
-      console.log("oooho");
-      navigate("/verify");
-    },
   });
 
   const submit = useCallback(
@@ -46,13 +42,18 @@ function Signup() {
     },
     [mutate, reset]
   );
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(`/verify/${signData.user.email}`);
+      toast.success(signData && signData.message);
+    }
+  }, [isSuccess, navigate, signData]);
 
-  if (isSuccess) {
-    toast.success(signData.message);
-  }
-  if (isError) {
-    toast.error(error.message);
-  }
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message);
+    }
+  }, [isError, error]);
   return (
     <React.Fragment>
       {isPending ? (
