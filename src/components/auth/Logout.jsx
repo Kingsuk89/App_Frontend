@@ -1,15 +1,10 @@
-import { useAuth } from "../../context/AuthProvider";
+import { useCallback } from "react";
 import toast from "react-hot-toast";
 
 function Logout() {
-  const [authUser, setAuthUser] = useAuth();
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     try {
-      setAuthUser({
-        ...authUser,
-        user: null,
-      });
-      localStorage.removeItem("Users");
+      localStorage.removeItem("authToken");
       toast.success("Logout successfully");
 
       setTimeout(() => {
@@ -19,7 +14,7 @@ function Logout() {
       toast.error("Error: " + error);
       setTimeout(() => {}, 2000);
     }
-  };
+  }, []);
   return (
     <div>
       <button

@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-// import Logout from "../auth/Logout";
+import Logout from "../auth/Logout";
 import { navItem } from "../../utils/utils";
+import { selectAuthToken } from "../../app/slice/authSlice";
 
 function Navbar() {
+  const authToken = useSelector(selectAuthToken);
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -156,18 +160,18 @@ function Navbar() {
               </svg>
             </label>
 
-            {/* {authUser ? (
+            {authToken ? (
               <Logout />
-            ) : ( */}
-            <div className="">
-              <Link
-                className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-                to="/login"
-              >
-                Login
-              </Link>
-            </div>
-            {/* )} */}
+            ) : (
+              <div className="">
+                <Link
+                  className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

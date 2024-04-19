@@ -1,5 +1,8 @@
+import toast from "react-hot-toast";
+
 export const navItem = [
   { href: "/", link: "Home" },
+  { href: "/profile", link: "Profile" },
   { href: "/course", link: "Course" },
   { href: "/contact", link: "Contact" },
   { href: "/about", link: "About" },
@@ -27,4 +30,34 @@ export const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
+};
+
+export const paymentProcess = (OrderData, UserData) => {
+  try {
+    const options = {
+      key: "rzp_test_YyTorB7QSjgpw2", // Enter the Key ID generated from the Dashboard
+      amount: OrderData.amount,
+      currency: OrderData.currency,
+      name: "Soumya Corp.",
+      description: "Test Transaction",
+      image: "",
+      order_id: OrderData.order_id,
+      handler: function () {
+        toast.success("successfully purchased");
+      },
+      prefill: {
+        name: UserData.name,
+        email: UserData.email,
+      },
+
+      theme: {
+        color: "#61dafb",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  } catch (error) {
+    console.log(error);
+  }
 };

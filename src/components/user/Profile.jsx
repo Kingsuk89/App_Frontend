@@ -50,7 +50,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <PerchesTable />
+          <PerchesTable UserData={UserData} />
         </div>
       )}
     </React.Fragment>
