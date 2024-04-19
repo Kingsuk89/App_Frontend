@@ -14,7 +14,11 @@ import { extendMoment } from "moment-range";
 
 import { selectAuthToken } from "../../app/slice/authSlice.js";
 import { paymentProcess } from "../../utils/utils.js";
-import { createOrder, getSubscriptionData } from "../../api/subscription.js";
+import {
+  UpdatePlaneStatus,
+  createOrder,
+  getSubscriptionData,
+} from "../../api/subscription.js";
 
 const momentRange = extendMoment(moment);
 
@@ -54,6 +58,7 @@ const PerchesTable = ({ UserData }) => {
       accessorKey: "user.email",
     },
     { header: "Status", accessorKey: "status" },
+    { header: "Plan status", accessorKey: "plan_status" },
     {
       header: "Subscription start",
       accessorKey: "start_at",
@@ -77,6 +82,13 @@ const PerchesTable = ({ UserData }) => {
         const end = moment(row.original.end_at, "YYYY-MM-DD");
         const range = momentRange.range(start, end);
         const isDisabled = range.contains(moment());
+        if (!isDisabled) {
+          UpdatePlaneStatus({
+            authToken,
+            order_id: row.original.order_id,
+            plan_status: "expire",
+          });
+        }
 
         return (
           <button

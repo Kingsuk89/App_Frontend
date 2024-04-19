@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const ImagePreview = memo(({ onClick, file }) => {
-  const [imgSrc, setImgSrc] = useState("../../../Default_avatar.jpg");
+const ImagePreview = memo((file) => {
+  const [imgSrc, setImgSrc] = useState("");
 
   useEffect(() => {
     if (file && file[0]) {
@@ -19,7 +19,6 @@ const ImagePreview = memo(({ onClick, file }) => {
         src={imgSrc}
         alt="Preview"
         className="h-14 w-14 cursor-pointer rounded-full"
-        onClick={onClick}
       />
     </div>
   );
@@ -28,7 +27,6 @@ const ImagePreview = memo(({ onClick, file }) => {
 ImagePreview.displayName = "ImagePreview";
 
 ImagePreview.propTypes = {
-  onClick: PropTypes.func.isRequired,
   file: PropTypes.arrayOf(PropTypes.object),
 };
 

@@ -54,6 +54,7 @@ function Signup() {
       toast.error(error.message);
     }
   }, [isError, error]);
+
   return (
     <React.Fragment>
       {isPending ? (
@@ -69,12 +70,14 @@ function Signup() {
               onSubmit={handleSubmit(submit)}
             >
               <div className="space-y-4 mb-4">
+                <label htmlFor="">Profile picture</label>
                 <input
                   type="file"
                   id="avatar"
                   name="avatar"
                   {...register("avatar")}
                   accept="image/jpeg,image/jpg,image/png"
+                  className="outline-none border-white border bg-transparent w-64 sm:w-72 my-1 rounded-md h-8 px-3"
                 />
                 <div>
                   <label htmlFor="fullName" className="block">
@@ -117,7 +120,7 @@ function Signup() {
                     id="password"
                     {...register("password")}
                     name="password"
-                    className="outline-none border-white border bg-transparent w-64 md:w-72 my-1 rounded-md h-8 px-3"
+                    className="outline-none border-white border bg-transparent w-64 sm:w-72 my-1 rounded-md h-8 px-3"
                     placeholder="Enter your password"
                   />
                   {errors.password && (
@@ -127,7 +130,7 @@ function Signup() {
               </div>
               <button
                 type="submit"
-                className="bg-white w-64 md:w-72 h-10 text-black rounded-md font-medium"
+                className="bg-white w-64 md:w-72 h-8 px-3 text-black rounded-md font-medium"
               >
                 Sign up
               </button>

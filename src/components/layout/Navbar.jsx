@@ -90,8 +90,11 @@ function Navbar() {
                 ))}
               </ul>
             </div>
-            <Link to="/" className=" text-2xl font-bold cursor-pointer">
-              bookStore
+            <Link
+              to="/"
+              className=" text-2xl font-bold cursor-pointer uppercase text-white"
+            >
+              Anjana Inn
             </Link>
           </div>
           <div className="navbar-end space-x-3">
