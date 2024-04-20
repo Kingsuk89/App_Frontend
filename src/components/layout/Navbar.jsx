@@ -75,7 +75,7 @@ function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content dark:bg-zinc-800 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {navItem.map((item, index) => (
                   <NavLink
@@ -92,11 +92,15 @@ function Navbar() {
                 ))}
               </ul>
             </div>
-            <Link
-              to="/"
-              className=" text-2xl font-bold cursor-pointer uppercase text-white"
-            >
-              Anjana Inn
+            <Link to="/" className="flex justify-center items-center gap-3">
+              <img
+                src="../../../public/logo.png"
+                alt="logo"
+                className="w-10 h-10 rounded-full"
+              />
+              <h1 className="text-2xl font-bold cursor-pointer uppercase text-white">
+                Anjana Inn
+              </h1>
             </Link>
           </div>
           <div className="navbar-end space-x-3">
@@ -122,7 +126,7 @@ function Navbar() {
               <input
                 type="checkbox"
                 className="theme-controller"
-                value="synthwave"
+                value="light"
               />
 
               {/* sun icon */}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Auth_Base_Url = `http://localhost:4000/review`;
+const Auth_Base_Url = `${import.meta.env.VITE_BASE_URL}/review`;
 
 export const getReview = async (authToken) => {
   const token = JSON.parse(authToken);

@@ -19,52 +19,47 @@ const Profile = () => {
         <Loader />
       ) : (
         <React.Fragment>
-          <h1 className="text-3xl font-bold uppercase absolute ml-24 mt-20 block">
-            Profile
-          </h1>
-          <div className="w-screen h-screen flex justify-center items-center flex-col py-10">
-            <img
-              src={UserData && UserData.avatar}
-              alt={UserData && UserData.name}
-              className="rounded-full w-20 h-20 my-4"
-            />
-            <div className="mx-20 md:mx-24 mb-16 space-y-7">
+          <div className="w-screen h-fit">
+            <h1 className="dark:text-white text-black text-center pt-24 text-3xl font-semibold">
+              PROFILE
+            </h1>
+            <div className="py-10">
               <div>
-                <h4 className="text-xl font-medium inline-block">Name</h4>
-                <h4 className="text-xl font-medium inline-block pl-6">
-                  :
-                </h4>{" "}
-                <p className="text-lg font-medium inline-block pl-6">
-                  {UserData && UserData.name}
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-medium inline-block">Email</h4>
-                <h4 className="text-xl font-medium inline-block pl-6">
-                  :
-                </h4>{" "}
-                <p className="text-lg font-medium inline-block pl-6">
-                  {UserData && UserData.email}
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-medium inline-block">Status</h4>
-                <h4 className="text-xl font-medium inline-block pl-6">
-                  :
-                </h4>{" "}
-                <p
-                  className={`text-lg font-medium inline-block ml-6  ${
-                    UserData && UserData.isVerified
-                      ? "bg-green-500 text-black rounded-xl px-2"
-                      : "bg-transparent"
-                  }`}
-                >
-                  {UserData && UserData.isVerified && "Verified"}
-                </p>
+                <span className="flex items-center justify-center">
+                  <img
+                    className="h-20 w-20 rounded-full"
+                    src={UserData.avatar}
+                    alt={UserData.name}
+                  />
+                </span>
+                <div className="py-5 gap-6 flex items-center justify-center  flex-col">
+                  <div className="">
+                    <span>Name :</span>
+                    <span> {UserData.name}</span>
+                  </div>
+                  <div className="">
+                    <div>
+                      <span>Email :</span>
+                      <span> {UserData.email}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <span>Status :</span>
+                      <span className="mx-2">
+                        {UserData.isVerified && (
+                          <span className="bg-green-700 rounded-full px-4 py-2">
+                            Verified
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <PerchesTable UserData={UserData} />
           </div>
+          <PerchesTable UserData={UserData} />
         </React.Fragment>
       )}
     </React.Fragment>

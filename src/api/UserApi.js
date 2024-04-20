@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Auth_Base_Url = `http://localhost:4000/user`;
+const Auth_Base_Url = `${import.meta.env.VITE_BASE_URL}/user`;
 
 export const getUser = async (authToken) => {
   const token = JSON.parse(authToken);

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import { contactSchema } from "../../validation/contact";
 import Loader from "../utils/Loader";
+import { PostQuery } from "../../api/QueryApi";
 
 const Contact = () => {
   const {
@@ -19,7 +20,7 @@ const Contact = () => {
   });
 
   const { mutate, error, isError, isPending } = useMutation({
-    mutationFn: () => {},
+    mutationFn: PostQuery,
     onSuccess: () => {
       toast.success("you problem is submitted");
     },
@@ -28,7 +29,7 @@ const Contact = () => {
   const submit = useCallback(
     (data) => {
       mutate(data);
-      console.log(data);
+
       reset();
     },
     [mutate, reset]
@@ -45,7 +46,7 @@ const Contact = () => {
         <div className="w-screen h-screen flex justify-center items-center">
           <form
             onSubmit={handleSubmit(submit)}
-            className="border border-[rgba(255,255,255,.2)] bg-[#F4CE14] dark:bg-transparent backdrop-blur-3xl w-[500px]  h-[550px] md:h-[500px] mx-6 rounded-md"
+            className="border border-[rgba(255,255,255,.2)] bg-[#F4CE14] dark:bg-transparent backdrop-blur-3xl w-[500px]  h-[550px] md:h-[500px] mx-1 rounded-md"
           >
             <div className="flex justify-center py-4">
               <h1 className="text-2xl text-white font-bold">Contact us</h1>

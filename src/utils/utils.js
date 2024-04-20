@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 export const navItem = [
   { href: "/", link: "Home" },
   { href: "/profile", link: "Profile" },
-  { href: "/course", link: "Course" },
   { href: "/contact", link: "Contact" },
 ];
 
@@ -34,7 +33,7 @@ export const responsive = {
 export const paymentProcess = (OrderData, UserData) => {
   try {
     const options = {
-      key: "rzp_test_YyTorB7QSjgpw2", // Enter the Key ID generated from the Dashboard
+      key: import.meta.env.VITE_RAZOPAY_KEY, // Enter the Key ID generated from the Dashboard
       amount: OrderData.amount,
       currency: OrderData.currency,
       name: "Soumya Corp.",

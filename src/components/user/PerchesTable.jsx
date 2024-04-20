@@ -125,44 +125,56 @@ const PerchesTable = ({ UserData }) => {
           </button>
         </div>
       ) : (
-        <div className="w3-container">
-          <table className="w3-table w3-striped w3-bordered">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="flex justify-between mt-10">
-            <button
-              onClick={() => table.setPageIndex(0)}
-              className="bg-white px-4 py-2 rounded-md text-black"
-            >
-              First page
-            </button>
+        <React.Fragment>
+          <div className="flex flex-col">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div className="overflow-hidden">
+                  <table className="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                    <thead className="border-b border-neutral-200 font-medium dark:border-white/10">
+                      {table.getHeaderGroups().map((headerGroup) => (
+                        <tr key={headerGroup.id}>
+                          {headerGroup.headers.map((header) => (
+                            <th
+                              key={header.id}
+                              scope="col"
+                              className="px-6 py-4"
+                            >
+                              {flexRender(
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                            </th>
+                          ))}
+                        </tr>
+                      ))}{" "}
+                    </thead>
+                    <tbody>
+                      {table.getRowModel().rows.map((row) => (
+                        <tr
+                          key={row.id}
+                          className="border-b border-neutral-200 dark:border-white/10"
+                        >
+                          {row.getVisibleCells().map((cell) => (
+                            <td
+                              key={cell.id}
+                              className="whitespace-nowrap px-6 py-4 font-medium"
+                            >
+                              {flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between my-10 mx-6">
             <button
               disabled={!table.getCanPreviousPage()}
               onClick={() => table.previousPage()}
@@ -177,14 +189,8 @@ const PerchesTable = ({ UserData }) => {
             >
               Next
             </button>
-            <button
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              className="bg-white px-4 py-2 rounded-md text-black"
-            >
-              Last page
-            </button>
           </div>
-        </div>
+        </React.Fragment>
       )}
     </React.Fragment>
   );

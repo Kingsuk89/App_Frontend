@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Auth_Base_Url = `http://localhost:4000/payment`;
+const Auth_Base_Url = `${import.meta.env.VITE_BASE_URL}/payment`;
 
 export const getSubscriptionData = async (authToken) => {
   const token = JSON.parse(authToken);

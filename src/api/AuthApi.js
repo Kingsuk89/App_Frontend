@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Auth_Base_Url = `http://localhost:4000/auth`;
+const Auth_Base_Url = `${import.meta.env.VITE_BASE_URL}/auth`;
 
 export const signUp = async (data) => {
   try {
