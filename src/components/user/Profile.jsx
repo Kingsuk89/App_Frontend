@@ -19,10 +19,10 @@ const Profile = () => {
         <Loader />
       ) : (
         <React.Fragment>
-          <h1 className="text-3xl font-bold uppercase absolute ml-24 mt-20">
+          <h1 className="text-3xl font-bold uppercase absolute ml-24 mt-20 block">
             Profile
           </h1>
-          <div className="w-screen h-screen flex justify-center items-center flex-col">
+          <div className="w-screen h-screen flex justify-center items-center flex-col py-10">
             <img
               src={UserData && UserData.avatar}
               alt={UserData && UserData.name}

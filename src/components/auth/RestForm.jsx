@@ -14,11 +14,15 @@ const RestForm = () => {
     defaultValues: { email: "" },
   });
 
-  const { isError, isPending, error, isSuccess, mutate } = useMutation({
+  const {
+    isError,
+    isPending,
+    error,
+    isSuccess,
+    mutate,
+    data: resetData,
+  } = useMutation({
     mutationFn: ResetUserForm,
-    onSuccess: () => {
-      navigate("/reset");
-    },
   });
 
   const submit = useCallback(
@@ -37,9 +41,10 @@ const RestForm = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      navigate(`/reset/${resetData?.email}`);
       toast.success("check your mail");
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate, resetData?.email]);
 
   return (
     <React.Fragment>
@@ -47,7 +52,7 @@ const RestForm = () => {
         <Loader />
       ) : (
         <div className="h-screen w-screen flex items-center justify-center">
-          <div className="bg-transparent border border-[rgba(255,255,255,.2)] backdrop-blur-lg  w-[300px] h-[300px] md:w-[400px] rounded-lg m-20 flex justify-center items-center flex-col">
+          <div className="dark:bg-transparent border bg-[#F4CE14] border-[rgba(255,255,255,.2)] backdrop-blur-lg  w-[300px] h-[300px] md:w-[400px] rounded-lg m-20 flex justify-center items-center flex-col">
             <h2 className="text-center pt-6 text-white text-2xl font-bold">
               Reset your password
             </h2>
@@ -56,14 +61,14 @@ const RestForm = () => {
               className="mx-5 my-10 md:mx-14 flex justify-center flex-col"
             >
               <div>
-                <label htmlFor="email" className="block">
+                <label htmlFor="email" className="block text-white">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="outline-none border-white border bg-transparent w-64 md:w-72 mb-6 mt-2 rounded-md h-8 px-3"
+                  className="outline-none border-white placeholder:text-white border bg-transparent w-64 md:w-72 mb-6 mt-2 rounded-md h-8 px-3 text-white"
                   placeholder="Enter your email"
                   {...register("email")}
                 />

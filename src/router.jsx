@@ -60,7 +60,7 @@ const router = createBrowserRouter([
     element: <RestForm />,
   },
   {
-    path: "/reset",
+    path: "/reset/:email",
     element: <ResetPass />,
   },
 ]);

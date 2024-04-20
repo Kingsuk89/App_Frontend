@@ -45,14 +45,14 @@ const Contact = () => {
         <div className="w-screen h-screen flex justify-center items-center">
           <form
             onSubmit={handleSubmit(submit)}
-            className="border border-[rgba(255,255,255,.2)] bg-transparent backdrop-blur-3xl w-[500px]  h-[550px] md:h-[500px] mx-6 rounded-md"
+            className="border border-[rgba(255,255,255,.2)] bg-[#F4CE14] dark:bg-transparent backdrop-blur-3xl w-[500px]  h-[550px] md:h-[500px] mx-6 rounded-md"
           >
             <div className="flex justify-center py-4">
               <h1 className="text-2xl text-white font-bold">Contact us</h1>
             </div>
             <div className="my-4 gap-4 flex justify-center items-center mx-4 flex-col md:flex-row">
               <div className="mx-4 md:py-0">
-                <label htmlFor="" className="block md:inline">
+                <label htmlFor="" className="block md:inline text-white">
                   First Name
                 </label>
                 <input
@@ -68,7 +68,7 @@ const Contact = () => {
                 )}
               </div>
               <div className="mx-4 md:py-0">
-                <label htmlFor="" className="block md:inline">
+                <label htmlFor="" className="block md:inline text-white">
                   Last Name
                 </label>
                 <input
@@ -86,7 +86,7 @@ const Contact = () => {
             </div>
             <div className="my-4 flex justify-center max-md:items-center mx-4 flex-col gap-4">
               <div className="flex justify-center flex-col">
-                <label htmlFor="" className="block">
+                <label htmlFor="" className="block text-white">
                   Email
                 </label>
                 <input
@@ -102,7 +102,9 @@ const Contact = () => {
                 )}
               </div>
               <div className="flex justify-center flex-col">
-                <label htmlFor="">Message</label>
+                <label htmlFor="" className="text-white">
+                  Message
+                </label>
                 <textarea
                   placeholder="Lave you massage"
                   rows={4}

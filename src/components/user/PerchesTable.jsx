@@ -118,7 +118,7 @@ const PerchesTable = ({ UserData }) => {
       {SubData && SubData.length === 0 ? (
         <div className="flex items-center justify-center">
           <button
-            className="text-black bg-white px-5 py-2 rounded-md cursor-pointer"
+            className="dark:text-black bg-blue-700   text-white dark:bg-white px-5 py-2 rounded-md cursor-pointer"
             onClick={() => handleEdit()}
           >
             Subscribe

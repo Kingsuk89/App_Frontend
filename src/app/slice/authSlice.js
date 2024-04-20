@@ -21,10 +21,14 @@ export const authSlice = createSlice({
       const token = window.localStorage.getItem("authToken");
       state.authToken = token;
     },
+    ClearUser: (state) => {
+      state.authToken = null;
+      state.userId = null;
+    },
   },
 });
 
-export const { AuthUser, GetAuthUser } = authSlice.actions;
+export const { AuthUser, GetAuthUser, ClearUser } = authSlice.actions;
 
 export const selectAuthToken = (state) => state.auth.authToken;
 export const selectUserId = (state) => state.auth.userId;

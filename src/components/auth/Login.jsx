@@ -64,7 +64,7 @@ function Login() {
         <Loader />
       ) : (
         <div className="h-screen w-screen flex items-center justify-center">
-          <div className="bg-transparent border border-[rgba(255,255,255,.2)] backdrop-blur-lg  w-[300px] h-[500px] md:w-[400px] rounded-lg m-20">
+          <div className="dark:bg-transparent bg-[#F4CE14] border border-[rgba(255,255,255,.2)] backdrop-blur-lg  w-[300px] h-[500px] md:w-[400px] rounded-lg m-20">
             <h2 className="text-center pt-6 text-white text-2xl font-bold">
               Login
             </h2>
@@ -77,13 +77,13 @@ function Login() {
             >
               <div>
                 <div className="mb-4 gap-2">
-                  <label htmlFor="email" className="block mb-2">
+                  <label htmlFor="email" className="block mb-2 text-white">
                     Email
                   </label>
                   <input
                     type="email"
                     name="email"
-                    className="outline-none border-white border bg-transparent w-64 md:w-72 rounded-md h-8 px-3"
+                    className="outline-none border-white border bg-transparent w-64 md:w-72 rounded-md h-8 px-3 placeholder:text-white text-white"
                     placeholder="Enter your email"
                     {...register("email")}
                   />
@@ -94,13 +94,13 @@ function Login() {
                   )}
                 </div>
                 <div className="mb-6">
-                  <label htmlFor="password" className="block mb-2">
+                  <label htmlFor="password" className="block mb-2 text-white">
                     password
                   </label>
                   <input
                     type="password"
                     name="password"
-                    className="outline-none border-white border bg-transparent w-64 md:w-72 rounded-md h-8 px-3"
+                    className="outline-none border-white border bg-transparent w-64 md:w-72 rounded-md h-8 px-3 placeholder:text-white text-white"
                     placeholder="Enter your password"
                     {...register("password")}
                   />
@@ -111,7 +111,7 @@ function Login() {
                   )}
                 </div>
               </div>
-              <Link to="/reset-form" className="pb-2">
+              <Link to="/reset-form" className="pb-2 text-white">
                 Forgot password?
               </Link>
               <button
@@ -121,8 +121,11 @@ function Login() {
                 Login
               </button>
 
-              <p className="py-4">
-                Dont have an account? <Link to="/signUp">Sign up</Link>
+              <p className="py-4 text-white">
+                Dont have an account?{" "}
+                <Link to="/signUp" className="text-blue-700">
+                  Sign up
+                </Link>
               </p>
             </form>
           </div>

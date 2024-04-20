@@ -21,7 +21,7 @@ function Course() {
   return (
     <React.Fragment>
       <div className=" max-w-screen-2xl container mx-auto md:px-20 px-4">
-        <div className="mt-28 items-center justify-center text-center">
+        <div className="pt-28 items-center justify-center text-center">
           <h1 className="text-2xl  md:text-4xl">
             Were delighted to have you
             <span className="text-pink-500"> Here! :)</span>

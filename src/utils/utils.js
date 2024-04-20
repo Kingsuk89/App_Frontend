@@ -5,7 +5,6 @@ export const navItem = [
   { href: "/profile", link: "Profile" },
   { href: "/course", link: "Course" },
   { href: "/contact", link: "Contact" },
-  { href: "/about", link: "About" },
 ];
 
 export const responsive = {

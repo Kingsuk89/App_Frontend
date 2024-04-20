@@ -55,11 +55,15 @@ export const ResetUserForm = async (data) => {
   }
 };
 
-export const UserResetPass = async (data) => {
+export const UserResetPass = async ({ data, email }) => {
   try {
-    const response = await axios.post(`${Auth_Base_Url}/reset`, data, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await axios.post(
+      `${Auth_Base_Url}/reset?email=${email}`,
+      data,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     return response.data;
   } catch (error) {
     console.log(error);
