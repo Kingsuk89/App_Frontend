@@ -99,7 +99,7 @@ function Navbar() {
                 alt="logo"
                 className="w-10 h-10 rounded-full hidden md:block"
               />
-              <h1 className="text-2xl font-bold cursor-pointer uppercase text-white">
+              <h1 className="text-2xl font-bold cursor-pointer uppercase text-black dark:text-white">
                 Anjana Inn
               </h1>
             </Link>
