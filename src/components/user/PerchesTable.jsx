@@ -97,10 +97,11 @@ const PerchesTable = ({ UserData }) => {
             className={`${
               row.original.status === "expire"
                 ? "text-rose-700"
-                : "text-white bg-blue-700 px-4 py-2 rounded-md"
+                :`dark:text-white text-black ${isDisabled?"bg-transparent ":"bg-blue-700"} px-4 py-2 rounded-md`
             }`}
           >
-            {row.original.status === "expire" ? "expire" : "pay"}
+            {isDisabled?"valid":"pay"}
+            {row.original.status === "expire" ?"expire":null}
           </button>
         );
       },
@@ -114,85 +115,86 @@ const PerchesTable = ({ UserData }) => {
     getPaginationRowModel: getPaginationRowModel(),
   });
   return (
+<React.Fragment>
+  {SubData && SubData.length === 0 ? (
+    <div className="flex items-center justify-center">
+      <button
+        className="dark:text-black bg-blue-700 text-white dark:bg-white px-5 rounded-md cursor-pointer py-3"
+        onClick={() => handleEdit()}
+      >
+        Subscribe
+      </button>
+    </div>
+  ) : (
     <React.Fragment>
-      {SubData && SubData.length === 0 ? (
-        <div className="flex items-center justify-center">
-          <button
-            className="dark:text-black bg-blue-700   text-white dark:bg-white px-5 py-2 rounded-md cursor-pointer"
-            onClick={() => handleEdit()}
-          >
-            Subscribe
-          </button>
-        </div>
-      ) : (
-        <React.Fragment>
-          <div className="flex flex-col">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                <div className="overflow-hidden">
-                  <table className="min-w-full text-left text-sm font-light text-surface dark:text-white">
-                    <thead className="border-b border-neutral-200 font-medium dark:border-white/10">
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                          {headerGroup.headers.map((header) => (
-                            <th
-                              key={header.id}
-                              scope="col"
-                              className="px-6 py-4"
-                            >
-                              {flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                            </th>
-                          ))}
-                        </tr>
-                      ))}{" "}
-                    </thead>
-                    <tbody>
-                      {table.getRowModel().rows.map((row) => (
-                        <tr
-                          key={row.id}
-                          className="border-b border-neutral-200 dark:border-white/10"
+      <div className="flex flex-col mx-10">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                <thead className="border-b border-neutral-200 font-medium dark:border-white/10">
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <tr key={headerGroup.id}>
+                      {headerGroup.headers.map((header) => (
+                        <th
+                          key={header.id}
+                          scope="col"
+                          className="px-6 py-4"
                         >
-                          {row.getVisibleCells().map((cell) => (
-                            <td
-                              key={cell.id}
-                              className="whitespace-nowrap px-6 py-4 font-medium"
-                            >
-                              {flexRender(
-                                cell.column.columnDef.cell,
-                                cell.getContext()
-                              )}
-                            </td>
-                          ))}
-                        </tr>
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                        </th>
                       ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                    </tr>
+                  ))}
+                </thead>
+                <tbody>
+                  {table.getRowModel().rows.map((row) => (
+                    <tr
+                      key={row.id}
+                      className="border-b border-neutral-200 dark:border-white/10"
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <td
+                          key={cell.id}
+                          className="whitespace-nowrap px-6 py-4 font-medium"
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-          <div className="flex justify-between my-10 mx-6">
-            <button
-              disabled={!table.getCanPreviousPage()}
-              onClick={() => table.previousPage()}
-              className="bg-white px-4 py-2 rounded-md text-black cursor-pointer"
-            >
-              Previous
-            </button>
-            <button
-              disabled={!table.getCanNextPage()}
-              onClick={() => table.nextPage()}
-              className="bg-white px-4 py-2 rounded-md text-black cursor-pointer"
-            >
-              Next
-            </button>
-          </div>
-        </React.Fragment>
-      )}
+        </div>
+      </div>
+      <div className="flex justify-between my-10 mx-6">
+        <button
+          disabled={!table.getCanPreviousPage()}
+          onClick={() => table.previousPage()}
+          className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
+        >
+          Previous
+        </button>
+        <button
+          disabled={!table.getCanNextPage()}
+          onClick={() => table.nextPage()}
+          className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
+        >
+          Next
+        </button>
+      </div>
     </React.Fragment>
+  )}
+</React.Fragment>
+
   );
 };
 
