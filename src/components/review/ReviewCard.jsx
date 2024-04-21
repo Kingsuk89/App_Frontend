@@ -7,7 +7,12 @@ const ReviewCard = ({ pic, rating, name, comment }) => {
   return (
     <div className="md:w-[330px] lg:w-[384px] h-[400px] border bg-black dark:border-white rounded-xl bg-transparent backdrop-brightness-110 backdrop-blur-[100px]">
       <div className="flex items-center mx-5 my-10 gap-3">
-        <img src={pic} alt={name} className="rounded-full w-10" />
+        <img
+          src={pic}
+          alt={name}
+          className="rounded-full w-10"
+          loading="lazy"
+        />
         <p className="text-white capitalize">{name}</p>
       </div>
       <div className="mx-5 mb-5">

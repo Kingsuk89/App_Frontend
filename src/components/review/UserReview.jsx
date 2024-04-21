@@ -14,7 +14,7 @@ const UserReview = () => {
         autoPlay={true}
         autoPlaySpeed={4000}
         transitionDuration={500}
-        className="my-36"
+        className="mb-36 pt-36"
       >
         {review.map((item) => (
           <ReviewCard

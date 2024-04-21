@@ -16,6 +16,7 @@ const ImagePreview = memo((file) => {
   return (
     <div className="flex justify-center items-center mb-3">
       <img
+        loading="lazy"
         src={imgSrc}
         alt="Preview"
         className="h-14 w-14 cursor-pointer rounded-full"

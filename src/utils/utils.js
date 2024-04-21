@@ -3,7 +3,8 @@ import toast from "react-hot-toast";
 export const navItem = [
   { href: "/", link: "Home" },
   { href: "/profile", link: "Profile" },
-  { href: "/contact", link: "Contact" },
+  { href: "/gallery", link: "Gallery" },
+  { href: "/admin", link: "Admin" },
 ];
 
 export const responsive = {

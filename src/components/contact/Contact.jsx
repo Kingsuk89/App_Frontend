@@ -43,15 +43,15 @@ const Contact = () => {
       {isPending ? (
         <Loader />
       ) : (
-        <div className="w-screen h-screen flex justify-center items-center">
+        <div className=" flex justify-center items-center mx-4 mb-36">
           <form
             onSubmit={handleSubmit(submit)}
-            className="border border-[rgba(255,255,255,.2)] bg-[#F4CE14] dark:bg-transparent backdrop-blur-3xl w-[500px]  h-[550px] md:h-[500px] mx-1 rounded-md"
+            className="border border-[rgba(255,255,255,.2)] bg-black dark:bg-transparent backdrop-blur-3xl w-[350px] w-max-[500px]  h-[550px] h-max-[600px] rounded-md"
           >
             <div className="flex justify-center py-4">
               <h1 className="text-2xl text-white font-bold">Contact us</h1>
             </div>
-            <div className="my-4 gap-4 flex justify-center items-center mx-4 flex-col md:flex-row">
+            <div className="my-4 gap-4 flex justify-center items-center mx-4 flex-col ">
               <div className="mx-4 md:py-0">
                 <label htmlFor="" className="block md:inline text-white">
                   First Name
@@ -95,7 +95,7 @@ const Contact = () => {
                   id="email"
                   name="email"
                   placeholder="Enter your mail"
-                  className="block mt-2 px-4 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2"
+                  className="block mt-2 px-3 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2"
                   {...register("email")}
                 />
                 {errors.email && (
@@ -109,7 +109,7 @@ const Contact = () => {
                 <textarea
                   placeholder="Lave you massage"
                   rows={4}
-                  cols={25}
+                  cols={22}
                   name="message"
                   id="message"
                   className="mt-2 px-4 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2 resize-none"

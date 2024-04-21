@@ -30,6 +30,7 @@ const Profile = () => {
                     className="h-20 w-20 rounded-full"
                     src={UserData.avatar}
                     alt={UserData.name}
+                    loading="lazy"
                   />
                 </span>
                 <div className="py-5 gap-6 flex items-center justify-center  flex-col">

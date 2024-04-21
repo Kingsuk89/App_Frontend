@@ -1,16 +1,16 @@
 import React from "react";
 
-import Banner from "../utils/Banner";
-import Freebook from "../utils/Freebook";
 import UserReview from "../review/UserReview";
 import Map from "../map/Map";
+import Contact from "../contact/Contact";
+import Hero from "../utils/Hero";
 
 function Home() {
   return (
     <React.Fragment>
-      <Banner />
-      <Freebook />
+      <Hero />
       <UserReview />
+      <Contact />
       <Map />
     </React.Fragment>
   );
