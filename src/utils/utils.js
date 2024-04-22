@@ -4,7 +4,7 @@ export const navItem = [
   { href: "/", link: "Home" },
   { href: "/profile", link: "Profile" },
   { href: "/gallery", link: "Gallery" },
-  { href: "/admin", link: "Admin" },
+  // { href: "/admin", link: "Admin" },
 ];
 
 export const responsive = {

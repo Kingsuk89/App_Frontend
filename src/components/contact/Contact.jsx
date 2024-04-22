@@ -15,7 +15,7 @@ const Contact = () => {
     register,
     formState: { errors },
   } = useForm({
-    defaultValues: { firstName: "", lastName: "", email: "", message: "" },
+    defaultValues: { name: "", email: "", message: "" },
     resolver: yupResolver(contactSchema),
   });
 
@@ -51,41 +51,24 @@ const Contact = () => {
             <div className="flex justify-center py-4">
               <h1 className="text-2xl text-white font-bold">Contact us</h1>
             </div>
-            <div className="my-4 gap-4 flex justify-center items-center mx-4 flex-col ">
-              <div className="mx-4 md:py-0">
-                <label htmlFor="" className="block md:inline text-white">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  placeholder="Enter your first name"
-                  className="mt-2 px-3 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2"
-                  {...register("firstName")}
-                />
-                {errors.firstName && (
-                  <p className="text-rose-700">{errors.firstName.message}</p>
-                )}
-              </div>
-              <div className="mx-4 md:py-0">
-                <label htmlFor="" className="block md:inline text-white">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Enter your last name"
-                  className="mt-2 px-3 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2"
-                  {...register("lastName")}
-                />
-                {errors.lastName && (
-                  <p className="text-rose-700">{errors.lastName.message}</p>
-                )}
-              </div>
-            </div>
+
             <div className="my-4 flex justify-center max-md:items-center mx-4 flex-col gap-4">
+              <div className="flex justify-center flex-col">
+                <label htmlFor="" className="block text-white">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  className="block mt-2 px-3 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2"
+                  {...register("name")}
+                />
+                {errors.name && (
+                  <p className="text-rose-700">{errors.name.message}</p>
+                )}
+              </div>
               <div className="flex justify-center flex-col">
                 <label htmlFor="" className="block text-white">
                   Email

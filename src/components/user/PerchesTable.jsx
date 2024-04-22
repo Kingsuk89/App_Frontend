@@ -119,7 +119,7 @@ const PerchesTable = ({ UserData }) => {
   return (
     <React.Fragment>
       {SubData && SubData.length === 0 ? (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center py-10">
           <button
             className="dark:text-black bg-blue-700 text-white dark:bg-white px-5 rounded-md cursor-pointer py-3"
             onClick={() => handleEdit()}
@@ -129,7 +129,7 @@ const PerchesTable = ({ UserData }) => {
         </div>
       ) : (
         <React.Fragment>
-          <div className="flex flex-col mx-10 w-[100vw] h-fit">
+          <div className="flex flex-col md:mx-10 w-[100vw]  h-fit">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
@@ -176,22 +176,22 @@ const PerchesTable = ({ UserData }) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex justify-between my-10 mx-6">
-            <button
-              disabled={!table.getCanPreviousPage()}
-              onClick={() => table.previousPage()}
-              className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
-            >
-              Previous
-            </button>
-            <button
-              disabled={!table.getCanNextPage()}
-              onClick={() => table.nextPage()}
-              className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
-            >
-              Next
-            </button>
+            <div className="flex justify-between my-10 mx-6">
+              <button
+                disabled={!table.getCanPreviousPage()}
+                onClick={() => table.previousPage()}
+                className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
+              >
+                Previous
+              </button>
+              <button
+                disabled={!table.getCanNextPage()}
+                onClick={() => table.nextPage()}
+                className="dark:bg-white bg-black px-4 py-2 rounded-md dark:text-black text-white cursor-pointer"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </React.Fragment>
       )}
