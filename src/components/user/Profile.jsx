@@ -1,10 +1,13 @@
+/* eslint-disable react/no-unknown-property */
 import { useQuery } from "@tanstack/react-query";
-import PerchesTable from "./PerchesTable";
+import React, { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+
+const PerchesTable = lazy(() => import("./PerchesTable"));
 import { getUser } from "../../api/UserApi";
 import Loader from "../utils/Loader";
-import React from "react";
+
 import { selectAuthToken } from "../../app/slice/authSlice";
-import { useSelector } from "react-redux";
 
 const Profile = () => {
   const authToken = useSelector(selectAuthToken);
@@ -27,10 +30,13 @@ const Profile = () => {
               <div>
                 <span className="flex items-center justify-center">
                   <img
-                    className="h-20 w-20 rounded-full"
+                    className="rounded-full"
                     src={UserData.avatar}
                     alt={UserData.name}
                     loading="lazy"
+                    width="50"
+                    height="20"
+                    property="high"
                   />
                 </span>
                 <div className="py-5 gap-6 flex items-center justify-center  flex-col">
@@ -60,7 +66,9 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <PerchesTable UserData={UserData} />
+          <Suspense fallback={<Loader />}>
+            <PerchesTable UserData={UserData} />
+          </Suspense>
         </React.Fragment>
       )}
     </React.Fragment>

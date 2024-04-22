@@ -1,76 +1,163 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-import Layout from "./Layout";
-import Home from "./components/home/Home";
-import Login from "./components/auth/Login";
-import Signup from "./components/auth/Signup";
-import Verify from "./components/auth/Verify";
-import RestForm from "./components/auth/RestForm";
-import ResetPass from "./components/auth/ResetPass";
-import Profile from "./components/user/Profile";
-import Protected from "./components/utils/Protected";
-import Error from "./components/Error";
-import Gallery from "./components/gallery/Gallery";
-import AdminProtector from "./components/admin/AdminProtector";
-import Admin from "./components/admin/Admin";
+const Layout = lazy(() => import("./Layout"));
+const Home = lazy(() => import("./components/home/Home"));
+const Login = lazy(() => import("./components/auth/Login"));
+const Signup = lazy(() => import("./components/auth/Signup"));
+const Verify = lazy(() => import("./components/auth/Verify"));
+const RestForm = lazy(() => import("./components/auth/RestForm"));
+const ResetPass = lazy(() => import("./components/auth/ResetPass"));
+const Profile = lazy(() => import("./components/user/Profile"));
+const Protected = lazy(() => import("./components/utils/Protected"));
+const Error = lazy(() => import("./components/Error"));
+const Gallery = lazy(() => import("./components/gallery/Gallery"));
+const AdminProtector = lazy(() => import("./components/admin/AdminProtector"));
+const Admin = lazy(() => import("./components/admin/Admin"));
+import Loader from "./components/utils/Loader";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    errorElement: <Error />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Layout />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
     children: [
       {
         path: "",
-        element: <Home />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Home />
+          </Suspense>
+        ),
+        errorElement: (
+          <Suspense fallback={<Loader />}>
+            <Error />
+          </Suspense>
+        ),
       },
       {
         path: "/profile",
         element: (
-          <Protected>
-            <Profile />
-          </Protected>
+          <Suspense fallback={<Loader />}>
+            <Protected>
+              <Profile />
+            </Protected>
+          </Suspense>
+        ),
+        errorElement: (
+          <Suspense fallback={<Loader />}>
+            <Error />
+          </Suspense>
         ),
       },
       {
         path: "/gallery",
         element: (
-          <Protected>
-            <Gallery />
-          </Protected>
+          <Suspense fallback={<Loader />}>
+            <Protected>
+              <Gallery />
+            </Protected>
+          </Suspense>
+        ),
+        errorElement: (
+          <Suspense fallback={<Loader />}>
+            <Error />
+          </Suspense>
         ),
       },
       {
         path: "/admin",
         element: (
-          <Protected>
-            <AdminProtector>
-              <Admin />
-            </AdminProtector>
-          </Protected>
+          <Suspense fallback={<Loader />}>
+            <Protected>
+              <AdminProtector>
+                <Admin />
+              </AdminProtector>
+            </Protected>
+          </Suspense>
+        ),
+        errorElement: (
+          <Suspense fallback={<Loader />}>
+            <Error />
+          </Suspense>
         ),
       },
     ],
   },
   {
     path: "/login",
-    element: <Login />,
+
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Login />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
   },
   {
     path: "/signUp",
-    element: <Signup />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Signup />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
   },
   {
     path: "/verify/:email",
-    element: <Verify />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Verify />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
   },
   {
     path: "/reset-form",
-    element: <RestForm />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <RestForm />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
   },
   {
     path: "/reset/:email",
-    element: <ResetPass />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ResetPass />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<Loader />}>
+        <Error />
+      </Suspense>
+    ),
   },
 ]);
 
