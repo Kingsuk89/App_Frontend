@@ -22,7 +22,7 @@ const Profile = () => {
         <Loader />
       ) : (
         <React.Fragment>
-          <div className="w-screen h-fit">
+          <div className="w-screen h-full">
             <h1 className="dark:text-white text-black text-center pt-24 text-3xl font-semibold">
               PROFILE
             </h1>
@@ -30,7 +30,7 @@ const Profile = () => {
               <div>
                 <span className="flex items-center justify-center">
                   <img
-                    className="rounded-full"
+                    className="rounded-full w-14 h-14"
                     src={UserData.avatar}
                     alt={UserData.name}
                     loading="lazy"
@@ -64,11 +64,11 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
+              <Suspense fallback={<Loader />}>
+                <PerchesTable UserData={UserData} />
+              </Suspense>
             </div>
           </div>
-          <Suspense fallback={<Loader />}>
-            <PerchesTable UserData={UserData} />
-          </Suspense>
         </React.Fragment>
       )}
     </React.Fragment>
