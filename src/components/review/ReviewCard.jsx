@@ -10,15 +10,17 @@ const ReviewCard = ({ pic, rating, name, comment }) => {
         <img
           src={pic}
           alt={name}
-          className="rounded-full w-10"
+          className="rounded-full"
           loading="lazy"
+          width="30"
+          height="30"
         />
         <p className="text-white capitalize">{name}</p>
       </div>
       <div className="mx-5 mb-5">
         <Rating value={rating} readOnly style={{ maxWidth: 100 }} />
       </div>
-      <div className="mx-5">{comment}</div>
+      <div className="px-5">{comment}</div>
     </div>
   );
 };
