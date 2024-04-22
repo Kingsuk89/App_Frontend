@@ -94,12 +94,14 @@ function Navbar() {
             </div>
             <Link to="/" className="flex justify-center items-center gap-3">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 loading="lazy"
                 alt="logo"
-                className="w-10 h-10 rounded-full hidden md:block"
+                className=" rounded-full hidden md:block"
+                width="40"
+                height="40"
               />
-              <h1 className="text-2xl font-bold cursor-pointer uppercase text-white">
+              <h1 className="text-2xl font-bold cursor-pointer uppercase text-black dark:text-white">
                 Anjana Inn
               </h1>
             </Link>
