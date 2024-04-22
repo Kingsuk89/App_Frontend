@@ -1,11 +1,11 @@
 import Carousel from "react-multi-carousel";
 import { responsive } from "../../utils/utils";
 import GalleryCard from "./GalleryCard";
-const pic = "/Hero.jpg";
+// const pic = "/Hero.jpg";
 
 const Gallery = () => {
   return (
-    <div className="mx-10 w-screen h-screen">
+    <div className="w-screen h-screen flex justify-center items-center">
       <Carousel
         showDots={true}
         responsive={responsive}
@@ -13,7 +13,7 @@ const Gallery = () => {
         autoPlay={true}
         autoPlaySpeed={4000}
         transitionDuration={500}
-        className="mb-36 pt-36"
+        className=""
       >
         {/* {review.map((item) => ( */}
         <GalleryCard pic={`https://source.unsplash.com/random/200x200?sig=2`} />

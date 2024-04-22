@@ -46,7 +46,7 @@ const Contact = () => {
         <div className=" flex justify-center items-center mx-4 mb-36">
           <form
             onSubmit={handleSubmit(submit)}
-            className="border border-[rgba(255,255,255,.2)] bg-black dark:bg-transparent backdrop-blur-3xl w-[350px] w-max-[500px]  h-[550px] h-max-[600px] rounded-md"
+            className="border border-[rgba(255,255,255,.2)] bg-black dark:bg-transparent backdrop-blur-3xl w-[350px] w-max-[500px]  h-[550px] h-max-[600px] rounded-md flex justify-center items-center flex-col"
           >
             <div className="flex justify-center py-4">
               <h1 className="text-2xl text-white font-bold">Contact us</h1>
@@ -91,11 +91,9 @@ const Contact = () => {
                 </label>
                 <textarea
                   placeholder="Lave you massage"
-                  rows={4}
-                  cols={22}
                   name="message"
                   id="message"
-                  className="mt-2 px-4 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2 resize-none"
+                  className="mt-2 px-4 w-[245px] h-20 bg-transparent placeholder:text-white text-white border border-white rounded-md py-2 resize-none"
                   {...register("message")}
                 />
                 {errors.message && (

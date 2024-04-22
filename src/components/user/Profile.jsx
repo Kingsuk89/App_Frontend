@@ -64,10 +64,10 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <Suspense fallback={<Loader />}>
-                <PerchesTable UserData={UserData} />
-              </Suspense>
-            </div>
+            </div>{" "}
+            <Suspense fallback={<Loader />}>
+              <PerchesTable UserData={UserData} />
+            </Suspense>
           </div>
         </React.Fragment>
       )}

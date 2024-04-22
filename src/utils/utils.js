@@ -17,13 +17,9 @@ export const responsive = {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
   },
-  midScreen: {
-    breakpoint: { max: 1024, min: 700 },
-    items: 2,
-  },
   tablet: {
-    breakpoint: { max: 700, min: 493 },
-    items: 1,
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },

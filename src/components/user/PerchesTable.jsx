@@ -129,7 +129,7 @@ const PerchesTable = ({ UserData }) => {
         </div>
       ) : (
         <React.Fragment>
-          <div className="flex flex-col md:mx-10 w-[100vw]  h-fit">
+          <div className="flex flex-col md:mx-10 w-[100vw]  h-screen">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
