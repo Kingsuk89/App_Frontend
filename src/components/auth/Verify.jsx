@@ -46,7 +46,7 @@ const Verify = () => {
       {isPending ? (
         <Loader />
       ) : (
-        <div className="h-screen w-screen flex items-center justify-center">
+        <div className="h-[100vh] w-screen flex items-center justify-center">
           <div className="dark:bg-transparent bg-[#F4CE14] border border-[rgba(255,255,255,.2)] backdrop-blur-lg  w-[300px] h-[300px] md:w-[400px] rounded-lg m-20 flex justify-center items-center flex-col">
             <h2 className="text-center pt-6 text-white text-2xl font-bold">
               Verification

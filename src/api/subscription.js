@@ -10,8 +10,7 @@ export const getSubscriptionData = async (authToken) => {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw new Error("Something went wrong");
+    throw new Error(error.response.data.message);
   }
 };
 
@@ -23,8 +22,7 @@ export const createOrder = async (authToken) => {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw new Error("Something went wrong");
+    throw new Error(error.response.data.message);
   }
 };
 
@@ -44,7 +42,6 @@ export const UpdatePlaneStatus = async ({
     );
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw new Error("Something went wrong");
+    throw new Error(error.response.data.message);
   }
 };
